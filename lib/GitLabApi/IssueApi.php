@@ -110,5 +110,7 @@ class IssueApi extends AbstractApi{
 
         $url = sprintf('%s/api/v3/projects/%d/issues?private_token=%s', $this->getApiUrl(), $project_id, $this->getToken());
         $this->postRequest($url, $data);
+
+        return true;
     }
 }
