@@ -1,7 +1,7 @@
 <?php
 namespace GitLabApi;
 
-class GitLabIssueApi extends AbstractApi{
+class IssueApi extends AbstractApi{
 
     /**
      * Get all issues created by authenticed user

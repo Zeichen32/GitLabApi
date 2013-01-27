@@ -11,7 +11,7 @@ Usage
 
 ```php
     $browser = new \Buzz\Browser();
-    $api = new \GitLabApi\GitLabIssueApi($browser, 'your-key', 'http://your-gitlab-server.com');
+    $api = new \GitLabApi\IssueApi($browser, 'your-key', 'http://your-gitlab-server.com');
 
     // API Calls
     var_dump($api->getIssues());
