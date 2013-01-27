@@ -1,0 +1,24 @@
+{
+    "name": "zeichen32/gitlabapi",
+    "description": "Gitlab api php wrapper",
+    "homepage": "https://github.com/Zeichen32/GitLabApi",
+    "keywords": ["gitlab", "api"],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0",
+        "kriswallsmith/buzz": "*"
+    },
+    "authors": [
+        {
+            "name": "Zeichen32",
+            "email": "j.averkamp@itm-systems.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "GitLabApi": "lib/"
+        }
+    }
+}
