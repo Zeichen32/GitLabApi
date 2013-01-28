@@ -94,4 +94,18 @@ abstract class AbstractApi {
 
         return $response->getContent();
     }
+
+    /**
+     * @param $url
+     * @return String
+     */
+    protected function deleteRequest($url) {
+        /**
+         * @var $response \Buzz\Message\Response
+         */
+        $response = $this->getBrowser()->delete($url);
+        $this->isValidRequest($response);
+
+        return $response->getContent();
+    }
 }
