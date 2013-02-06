@@ -20,7 +20,7 @@ class IssueApi extends AbstractApi{
         if(!is_int($per_page))
             throw new \InvalidArgumentException('Second parameter must be integer');
 
-        $url = sprintf('%s/api/v3/issues?private_token=%s&page=%d&per_page=%d', $this->getApiUrl(), $this->getToken(), $page, $per_page);
+        $url = sprintf('%s/api/v3/issues?private_token=%s&page=%d&per_page=%d', $this->getApiUrl(), urlencode($this->getToken()), $page, $per_page);
 
         return $this->getRequest($url);
     }
@@ -45,7 +45,7 @@ class IssueApi extends AbstractApi{
         if(!is_int($per_page))
             throw new \InvalidArgumentException('Third parameter must be integer');
 
-        $url = sprintf('%s/api/v3/projects/%d/issues?private_token=%s&page=%d&per_page=%d', $this->getApiUrl(), $project_id, $this->getToken(), $page, $per_page);
+        $url = sprintf('%s/api/v3/projects/%d/issues?private_token=%s&page=%d&per_page=%d', $this->getApiUrl(), $project_id, urlencode($this->getToken()), $page, $per_page);
 
         return $this->getRequest($url);
     }
@@ -65,7 +65,7 @@ class IssueApi extends AbstractApi{
         if(!is_int($issue_id))
             throw new \InvalidArgumentException('Second parameter must be integer');
 
-        $url = sprintf('%s/api/v3/projects/%d/issues/%d?private_token=%s', $this->getApiUrl(), $project_id, $issue_id, $this->getToken());
+        $url = sprintf('%s/api/v3/projects/%d/issues/%d?private_token=%s', $this->getApiUrl(), $project_id, $issue_id, urlencode($this->getToken()));
 
         return $this->getRequest($url);
     }
@@ -108,7 +108,7 @@ class IssueApi extends AbstractApi{
             'labels'        => implode(',', $labels),
         ));
 
-        $url = sprintf('%s/api/v3/projects/%d/issues?private_token=%s', $this->getApiUrl(), $project_id, $this->getToken());
+        $url = sprintf('%s/api/v3/projects/%d/issues?private_token=%s', $this->getApiUrl(), $project_id, urlencode($this->getToken()));
         $this->postRequest($url, $data);
 
         return true;
