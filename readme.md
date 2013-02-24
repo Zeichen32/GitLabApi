@@ -11,8 +11,14 @@ Usage
 
 ```php
     $browser = new \Buzz\Browser();
-    $api = new \GitLabApi\IssueApi($browser, 'your-key', 'http://your-gitlab-server.com');
+    $client = new \GitLab\Client($browser, 'your-key', 'http://your-gitlab-server.com');
 
-    // API Calls
-    var_dump($api->getIssues());
+    // Api calls
+    var_dump($client->api('user')->getUsers());
+    var_dump($client->api('issues')->getIssues());
+
+
+    // The Alternative way
+    $issue_api = new \GitLab\Api\IssueApi($client);
+    var_dump($issue_api->getIssues());
 ```

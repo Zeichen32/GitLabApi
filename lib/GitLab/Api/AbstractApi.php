@@ -1,43 +1,20 @@
 <?php
-namespace GitLabApi;
+namespace GitLab\Api;
 
-use Buzz\Browser;
 use Buzz\Message\Response;
+use GitLab\ClientInterface;
 
 abstract class AbstractApi {
 
-    private $token;
-    private $api_url;
-    private $browser;
+    private $client;
 
-    public function __construct(Browser $browser, $token, $api_url) {
-        $this->browser = $browser;
-        $this->token = $token;
-        $this->api_url = $api_url;
+    public function __construct(ClientInterface $client) {
+        $this->client = $client;
     }
 
-    /**
-     * @return \Buzz\Browser
-     */
-    public function getBrowser()
+    public function getClient()
     {
-        return $this->browser;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getApiUrl()
-    {
-        return $this->api_url;
+        return $this->client;
     }
 
     /**
@@ -70,7 +47,7 @@ abstract class AbstractApi {
         /**
          * @var $response \Buzz\Message\Response
          */
-        $response = $this->getBrowser()->get($url);
+        $response = $this->getClient()->getBrowser()->get($url);
         $this->isValidRequest($response);
         $content = json_decode($response->getContent(), true);
 
@@ -89,7 +66,7 @@ abstract class AbstractApi {
         /**
          * @var $response \Buzz\Message\Response
          */
-        $response = $this->getBrowser()->post($url, array(), $data);
+        $response = $this->getClient()->getBrowser()->post($url, array(), $data);
         $this->isValidRequest($response);
 
         return $response->getContent();
@@ -103,7 +80,7 @@ abstract class AbstractApi {
         /**
          * @var $response \Buzz\Message\Response
          */
-        $response = $this->getBrowser()->delete($url);
+        $response = $this->getClient()->getBrowser()->delete($url);
         $this->isValidRequest($response);
 
         return $response->getContent();

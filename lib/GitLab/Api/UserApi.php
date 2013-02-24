@@ -1,5 +1,5 @@
 <?php
-namespace GitLabApi;
+namespace GitLab\Api;
 
 class UserApi extends AbstractApi{
 
@@ -20,7 +20,14 @@ class UserApi extends AbstractApi{
         if(!is_int($per_page))
             throw new \InvalidArgumentException('Second parameter must be integer');
 
-        $url = sprintf('%s/api/v3/users?private_token=%s&page=%d&per_page=%d', $this->getApiUrl(), urlencode($this->getToken()), $page, $per_page);
+        $url = sprintf(
+            '%s/api/v3/users?private_token=%s&page=%d&per_page=%d',
+
+            $this->getClient()->getApiUrl(),
+            urlencode($this->getClient()->getToken()),
+            $page,
+            $per_page
+        );
 
         return $this->getRequest($url);
     }
@@ -36,7 +43,13 @@ class UserApi extends AbstractApi{
         if(!is_int($id))
             throw new \InvalidArgumentException('First parameter must be integer');
 
-        $url = sprintf('%s/api/v3/users/%d?private_token=%s', $this->getApiUrl(), $id, urlencode($this->getToken()));
+        $url = sprintf(
+            '%s/api/v3/users/%d?private_token=%s',
+
+            $this->getClient()->getApiUrl(),
+            $id,
+            urlencode($this->getClient()->getToken())
+        );
 
         return $this->getRequest($url);
     }
@@ -47,7 +60,13 @@ class UserApi extends AbstractApi{
      * @return array
      */
     public function getCurrentUser() {
-        $url = sprintf('%s/api/v3/user?private_token=%s', $this->getApiUrl(), urlencode($this->getToken()));
+        $url = sprintf(
+            '%s/api/v3/user?private_token=%s',
+
+            $this->getClient()->getApiUrl(),
+            urlencode($this->getClient()->getToken())
+        );
+
         return $this->getRequest($url);
     }
 
@@ -102,7 +121,13 @@ class UserApi extends AbstractApi{
             'projects_limit'  => $projects_limit,
         ));
 
-        $url = sprintf('%s/api/v3/users?private_token=%s', $this->getApiUrl(), urlencode($this->getToken()));
+        $url = sprintf(
+            '%s/api/v3/users?private_token=%s',
+
+            $this->getClient()->getApiUrl(),
+            urlencode($this->getClient()->getToken())
+        );
+
         $request = $this->postRequest($url, $data);
 
         return $request;
@@ -114,7 +139,13 @@ class UserApi extends AbstractApi{
      * @return array
      */
     public function getKeys() {
-        $url = sprintf('%s/api/v3/user/keys?private_token=%s', $this->getApiUrl(), urlencode($this->getToken()));
+        $url = sprintf(
+            '%s/api/v3/user/keys?private_token=%s',
+
+            $this->getClient()->getApiUrl(),
+            urlencode($this->getClient()->getToken())
+        );
+
         return $this->getRequest($url);
     }
 
@@ -129,7 +160,14 @@ class UserApi extends AbstractApi{
         if(!is_int($id))
             throw new \InvalidArgumentException('First parameter must be integer');
 
-        $url = sprintf('%s/api/v3/user/keys/%d?private_token=%s', $this->getApiUrl(), $id, urlencode($this->getToken()));
+        $url = sprintf(
+            '%s/api/v3/user/keys/%d?private_token=%s',
+
+            $this->getClient()->getApiUrl(),
+            $id,
+            urlencode($this->getClient()->getToken())
+        );
+
         return $this->getRequest($url);
     }
 
@@ -144,7 +182,14 @@ class UserApi extends AbstractApi{
         if(!is_int($id))
             throw new \InvalidArgumentException('First parameter must be integer');
 
-        $url = sprintf('%s/api/v3/user/keys/%d?private_token=%s', $this->getApiUrl(), $id, urlencode($this->getToken()));
+        $url = sprintf(
+            '%s/api/v3/user/keys/%d?private_token=%s',
+
+            $this->getClient()->getApiUrl(),
+            $id,
+            urlencode($this->getClient()->getToken())
+        );
+
         return $this->deleteRequest($url);
     }
 
@@ -168,7 +213,13 @@ class UserApi extends AbstractApi{
             'key'  => $key,
         ));
 
-        $url = sprintf('%s/api/v3/user/keys?private_token=%s', $this->getApiUrl(), urlencode($this->getToken()));
+        $url = sprintf(
+            '%s/api/v3/user/keys?private_token=%s',
+
+            $this->getClient()->getApiUrl(),
+            urlencode($this->getClient()->getToken())
+        );
+
         return $this->postRequest($url, $data);
     }
 
