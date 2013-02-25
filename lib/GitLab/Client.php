@@ -3,6 +3,7 @@ namespace GitLab;
 
 use Buzz\Browser;
 use GitLab\Api\IssueApi;
+use GitLab\Api\ProjectApi;
 use GitLab\Api\UserApi;
 
 class Client implements ClientInterface {
@@ -75,6 +76,11 @@ class Client implements ClientInterface {
             case 'issue':
                 return (isset($this->api['issue']) ?
                     $this->api['issue'] : $this->api['issue'] = new IssueApi($this));
+
+            case 'project':
+            case 'projects':
+            return (isset($this->api['project']) ?
+                $this->api['project'] : $this->api['project'] = new ProjectApi($this));
 
             default:
                 throw new \InvalidArgumentException('Unknown api call');
