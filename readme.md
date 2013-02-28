@@ -5,6 +5,8 @@ PHP Library for easy access to the gitlab api.
 
 This library is currently in development, so no stable release is available.
 
+If you are looking for stable library, you should take a look at:
+https://github.com/m4tthumphrey/php-gitlab-api
 
 Usage
 ---------------

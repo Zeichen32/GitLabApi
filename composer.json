@@ -17,7 +17,8 @@
     ],
     "minimum-stability": "dev",
     "suggest": {
-        "zeichen32/gitlabapibundle": "Include the gitlab issue tracker in your symfony2 project."
+        "zeichen32/gitlabapibundle": "Include the gitlab issue tracker in your symfony2 project.",
+        "m4tthumphrey/php-gitlab-api": "A stable GitLab API client"
     },
     "autoload": {
         "psr-0": {
